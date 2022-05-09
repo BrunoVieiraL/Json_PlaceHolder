@@ -6,7 +6,7 @@ import 'package:flutter_nv1/models/posts_model.dart';
 import 'package:http/http.dart' as http;
 
 class PostController{
-  ValueNotifier<List<Post>> posts = ValueNotifier<List<Post>>([]);
+  ValueNotifier<List<PostModel>> posts = ValueNotifier<List<PostModel>>([]);
   ValueNotifier<bool> inLoader = ValueNotifier<bool>(false);
 
   callApi() async {
@@ -19,7 +19,7 @@ class PostController{
         ),
       );
       var decodeResponse = jsonDecode(response.body) as List;
-      posts.value = decodeResponse.map((e) => Post.fromJson(e)).toList();
+      posts.value = decodeResponse.map((e) => PostModel.fromJson(e)).toList();
       await Future.delayed(const Duration(seconds: 2));
       //var decodeResponse = jsonDecode();
     } finally {
