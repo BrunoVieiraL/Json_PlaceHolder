@@ -21,7 +21,6 @@ class PostController{
       var decodeResponse = jsonDecode(response.body) as List;
       posts.value = decodeResponse.map((e) => PostModel.fromJson(e)).toList();
       await Future.delayed(const Duration(seconds: 2));
-      //var decodeResponse = jsonDecode();
     } finally {
       client.close();
       inLoader.value = false;
